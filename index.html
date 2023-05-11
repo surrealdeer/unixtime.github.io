@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <meta name=keywords content="unix, timestamp, time, stamp, january 1 1970, posix, converter, conversion, calculator, epoch, programming">
+    <meta name=description content="An intuitive and powerful tool for converting Unix timestamps and human-readable times.">
+    <meta http-equiv=content-type content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href=favicon.ico>
+    <title>Unix Timestamp Converter / Epoch Converter</title>
+</head>
+
+<body>
+    <div id=headerwrap>
+        <div class="container">
+            <div class="row mt">
+                <div class="col-md-6">
+                    <h1>A Simple Converter Tool for Unix Timestamps</h1>
+                </div>
+                <div class=col-md-6>
+                    <div style="background-color: rgba(61, 66, 78, 0.3); padding: 20px; border-radius: 10px">
+                        <input type=text id=timestamp_input class="form-control input-lg" placeholder="Enter a time or Unix timestamp to convert">
+                        <a class="btn btn-block btn-primary" style="margin-top: 10px" href="javascript:GetTimestamp()">Convert</a>
+                        <div id=error_message style="display: none">
+                            <h4>Error</h4>
+                            Unfortunately, this date and time or Unix timestamp is not formatted in a way that can be converted.
+                        </div>
+                        <div id=input_examples>
+                            <h4>Input Examples</h4>
+                            <ul>
+                                <li>January 1, 2015 @ 12:30 am</li>
+                                <li>January 1 2015 0:30</li>
+                                <li>Jan 1, 15 0:30</li>
+                                <li>1/1/15 0:30</li>
+                                <li>1420072200</li>
+                            </ul>
+                        </div>
+                        <div id=timestamp_output style="display: none; margin-top: 15px">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <h4>Unix Timestamp </h4>
+                                    </td>
+                                    <td id=moment_timestamp_output></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Local Date and Time </h4>
+                                    </td>
+                                    <td id=moment_time_local_output></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>UTC Date and Time </h4>
+                                    </td>
+                                    <td id=moment_time_utc_output></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #5397c4">
+        <div class=container>
+            <div class="row mt centered" style="color: #FFF; padding: 10px; border-radius: 10px;">
+                <div class="col-md-4 content">
+                    <h4 class=centered>Current Unix Timestamp</h4>
+                    <h3 class=current_timestamp></h3>
+                </div>
+                <br class="visible-xs visible-sm">
+                <div class="col-md-4 content">
+                    <h4 class=centered>Current Local Time</h4>
+                    <h3 id=current_time_local></h3>
+                </div>
+                <br class="visible-xs visible-sm">
+                <div class="col-md-4 content">
+                    <h4>Current UTC Time</h4>
+                    <h3 id=current_time_utc></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=container>
+        <div class="row mt centered">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>What is a Unix Timestamp?</h1>
+            </div>
+        </div>
+        <div class="row mt">
+            <div class="col-md-4" style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          ">
+                <img class=img_centered src="img/converter.png" width=128 height=128 alt="unix timestamp conversion for computers">
+                <h4 class=centered>Computers Emerge</h4>
+                <p>As computers became useful utilities, a need to track time was necessary. Computers interacting with one another needed a way to share a time reference to one another and databases.</p>
+            </div>
+            <hr class="visible-xs visible-sm">
+            <div class="col-md-4 content" style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          ">
+                <img class=img_centered src="img/currenttime.png" width=128 height=128 alt="time stamp converter for unix">
+                <h4 class=centered>Efficient Time Tracking</h4>
+                <p> Conventional dates contain various characters that need to be converted to a useful format each time they are used. By storing timestamps as an integer it is much easier for a computer to store and work for comparison using basic math.</p>
+            </div>
+            <hr class="visible-xs visible-sm">
+            <div class="col-md-4 content" style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          ">
+                <img class="img_centered img-circle" src="img/unixtimestamp.png" width=128 height=128 alt="unix epoch is january 1, 1970">
+                <h4 class=centered>January 1, 1970 - 12:00am UTC</h4>
+                <p> The Unix Epoch is the starting point created as a universal reference. All Unix Timestamps are an integer that simply represent the number of seconds since that time (currently
+                    <span
+                        class=current_timestamp></span> seconds since the Unix Epoch).</p>
+            </div>
+        </div>
+        <div class="row mt centered">
+            <a class="btn btn-lg btn-primary" href="http://en.wikipedia.org/wiki/Unix_timestamp"><span class="glyphicon glyphicon-link"></span> Learn more at Wikipedia</a>
+        </div>
+
+
+</div>
+<link rel=stylesheet href="bootstrap/3.0.3/css/bootstrap.min.css" type='text/css'>
+<link rel=stylesheet href='http://fonts.googleapis.com/css?family=Lato:300,400,900' type='text/css'>
+<style>body{background-color:#f2f2f2;font-family:'Lato', sans-serif;font-weight:300;font-size:16px;color:#555;-webkit-font-smoothing:antialiased;-webkit-overflow-scrolling:touch;}
+
+h1, h2, h3, h4, h5, h6{font-family:'Lato', sans-serif;font-weight:300;color:#333;}
+h1{font-size:40px;}
+h3{font-weight:400;}
+h4{font-weight:400;font-size:20px;}
+p{line-height:28px;margin-bottom:25px;font-size:16px;}
+.centered{text-align:center;}
+.img_centered{margin:0 auto;display:block;}
+a{color:#3498db;word-wrap:break-word;-webkit-transition:color 0.1s ease-in, background 0.1s ease-in;-moz-transition:color 0.1s ease-in, background 0.1s ease-in;-ms-transition:color 0.1s ease-in, background 0.1s ease-in;-o-transition:color 0.1s ease-in, background 0.1s ease-in;transition:color 0.1s ease-in, background 0.1s ease-in;}
+a:hover,
+a:focus{color:#003ac8;text-decoration:none;outline:0;}
+a:before,
+a:after{-webkit-transition:color 0.1s ease-in, background 0.1s ease-in;-moz-transition:color 0.1s ease-in, background 0.1s ease-in;-ms-transition:color 0.1s ease-in, background 0.1s ease-in;-o-transition:color 0.1s ease-in, background 0.1s ease-in;transition:color 0.1s ease-in, background 0.1s ease-in;}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}
+.navbar-default{background-color:#3498db;border-color:transparent;}
+.navbar-default .navbar-brand{color:white;}
+.navbar-default .navbar-nav > li > a{color:white;}
+.mt{margin-top:40px;margin-bottom:40px;}
+i{margin:8px;color:#3498db;}
+ul{margin-bottom:0;}
+#headerwrap{background-color:#1b1d21;background-attachment:relative;background-position:center center;width:100%;-webkit-background-size:100%;-moz-background-size:100%;-o-background-size:100%;background-size:100%;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+#headerwrap h1{margin-bottom:15px;color:white;font-size:45px;font-weight:300;letter-spacing:1px;}
+#headerwrap, #headerwrap h1, #headerwrap h2, #headerwrap h3, #headerwrap h4, #headerwrap h5, #headerwrap h6{color:white;}</style>
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<script src="moment.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script>var $currenttimestamp,$currenttime;$(document).ready(function(){$currenttimestamp=$(".current_timestamp");$currenttimeutc=$("#current_time_utc");$currenttimelocal=$("#current_time_local");UpdateCurrentUnixTimestamp();$("#timestamp_input").keyup(function(event){    if(event.keyCode==13){GetTimestamp();}});});function UpdateCurrentUnixTimestamp(){$currenttimestamp.html(moment().utc().format('X'));$currenttimelocal.html(moment().format("MMMM D, YYYY h:mm:ss a"));$currenttimeutc.html(moment().utc().format("MMMM D, YYYY h:mm:ss a"));setTimeout(function(){UpdateCurrentUnixTimestamp()},500);}
+function GetTimestamp(){var input=$("#timestamp_input").val();if((moment(input).isValid()||!isNaN(input))&&input.length){if(isNaN(input)){var moment_timestamp=moment(input).format('X');var moment_time_local=moment(input).format('MMMM D, YYYY @ h:mm:ss a');var moment_time_utc=moment(input).utc().format('MMMM D, YYYY @ h:mm:ss a');}
+else{var moment_timestamp=input;var moment_time_local=moment(input*1000).format('MMMM D, YYYY @ h:mm:ss a');var moment_time_utc=moment(input*1000).utc().format('MMMM D, YYYY @ h:mm:ss a');}
+$("#moment_timestamp_output").html("<h4>"+moment_timestamp+"</h4>");$("#moment_time_local_output").html("<h4>"+moment_time_local+"</h4>");$("#moment_time_utc_output").html("<h4>"+moment_time_utc+"</h4>");$("#error_message").hide();$("#input_examples").hide();$("#timestamp_output").show();}
+else{$("#timestamp_output").hide();$("#error_message").show();$("#input_examples").show();}}</script>
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-50130257-1','unixtimestampconverter.com');ga('send','pageview');</script>
+</body>
+</html>
